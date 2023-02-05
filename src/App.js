@@ -1,17 +1,15 @@
 import React from 'react';
 
-
-import './App.css';
-import Product from './Component/Cart/product';
-import Navigation from './Component/Navigation';
-import { Footer } from './Component/Footer/Footer';
+import CartProduct from './Component/Cart/product';
+import { Header } from './Component/Layout/Header';
+import { Footer } from './Component/Layout/Footer';
 
 function App() {
   return (
     <div>
-    <Navigation />
-    < Product />
-   <Footer />
+    <Header />
+    <CartProduct />
+    <Footer />
     </div>
   );
 }
