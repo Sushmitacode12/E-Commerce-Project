@@ -3,9 +3,9 @@ import {  Container, Navbar } from "react-bootstrap";
 export const Footer = () => {
   return (
     <div>
-    <Navbar class="bg-primary text-white bg-info py-3" expand="md">
+    <Navbar class="text-white bg-info " expand="md">
     <Container>
-      <p className="display-5">The Generics</p>
+      <h1 className="font-weight-bold">The Generics</h1>
     </Container>
   </Navbar>
 </div>

@@ -1,72 +1,55 @@
-import { useState } from "react";
-import { Button, Offcanvas, Table } from "react-bootstrap";
+import React, { useContext } from "react";
+import { Container, Card, Button } from "react-bootstrap";
+import {CartContext} from "../Store/cart-context";
 
-export const Cart = () => {
-  const [show, setShow] = useState(false);
+export default function CardComponent  (props)  {
 
-  const handleShow = () => setShow(true);
-  const handleClose = () => setShow(false);
-  return (
-    <>
-      <Button
-        className="block-example border border-info me-5"
-        variant="dark"
-        onClick={handleShow}
-      >
-        cart
-      </Button>
-      <Offcanvas show={show} onHide={handleClose}>
-        <Offcanvas.Header closeButton>
-          <Offcanvas.Title>CART</Offcanvas.Title>
-        </Offcanvas.Header>
-        <Table striped bordered hover>
-          <thead>
-            <tr>
-              <th>ITEM</th>
-              <th>PRICE</th>
-              <th>QUANTITY</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <img
-                  src="https://prasadyash2411.github.io/ecom-website/img/Album%201.png"
-                  alt="Colors"
-                  style={{ width: "50px" }}
+    const cartCtx = useContext(CartContext);
+
+    const cartHandler = (title, src, price) => {
+        const newItem = {
+            title,
+            src,
+            price,
+            quantity: 1,
+        };
+
+        let ispresent = false;
+
+        cartCtx.cartItem.map((item) => {
+            if(item.title === newItem.title) {
+                ispresent = true;
+                return newItem;
+            }
+            return item;
+        });
+
+        cartCtx.setCartItem(
+            ispresent ? [...cartCtx.cartItem] : [...cartCtx.cartItem, newItem]
+          );
+    };
+
+    return (
+        <Container className="mt-5">
+            <Card style={{ width: '18rem' }}>
+                <Card.Title>{props.title}</Card.Title>
+                <Card.Img 
+                    variant="top"
+                     src={props.src}
                 />
-                Colors
-              </td>
-              <td>100</td>
-              <td>2<Button variant="danger">REMOVE</Button></td>
-            </tr>
-            <tr>
-              <td>
-                <img
-                  src="https://prasadyash2411.github.io/ecom-website/img/Album%202.png"
-                  alt="Black and White Colors"
-                  style={{ width: "50px" }}
-                />
-                Black and White Colors
-              </td>
-              <td>50</td>
-              <td>3<Button variant="danger">REMOVE</Button></td>
-            </tr>
-            <tr>
-              <td>
-                <img
-                  src="https://prasadyash2411.github.io/ecom-website/img/Album%203.png"
-                  alt="Yellow and Black Colors"
-                  style={{ width: "50px" }}
-                />
-                Yellow and Black Colors
-              </td>
-              <td>70</td>
-              <td>1<Button variant="danger">REMOVE</Button></td>
-            </tr>
-          </tbody>
-        </Table>
-      </Offcanvas>
-    </>
-  );
+                <Card.Body className="d-block">
+                    <p>Price: {props.price}</p>
+                    <Button
+                        variant="info"
+                        onClick={() => 
+                            cartHandler(props.title, props.src, props.price)}
+                            >
+                            Add To Cart
+                            </Button>
+                </Card.Body>
+            </Card>
+        </Container>
+    );
 };
+
+

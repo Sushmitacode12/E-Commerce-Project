@@ -1,6 +1,6 @@
-import CardComponent from "./Card";
+import CardComponent from "../Card/Cart";
 
-const CartProduct = () => {
+export const CartProduct = (props) => {
   return (
     <div className="d-flex">
       <div className="mx-auto">
@@ -31,4 +31,3 @@ const CartProduct = () => {
   );
 };
 
-export default CartProduct;
