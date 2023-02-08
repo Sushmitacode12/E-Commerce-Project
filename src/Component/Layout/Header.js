@@ -10,7 +10,7 @@ export const Header = () => {
     <div className="fixed-top">
     <Navbar bg="dark"  variant="dark">
     <Container className="justify-content-center"    >
-      <Navbar.Brand href="#Home">Home</Navbar.Brand>
+      <NavLink to="/Home" style={{ textDecoration: 'inherit', color :"white" }}>Home</NavLink>
       <Navbar.Brand href="#store">Store</Navbar.Brand>
       <NavLink to="/About" style={{ textDecoration: 'inherit', color : 'white' }}>About</NavLink>
       </Container>

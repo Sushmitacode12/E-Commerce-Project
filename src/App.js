@@ -5,6 +5,7 @@ import { Footer } from './Component/Layout/Footer';
 import { CartContext } from './Component/Store/cart-context';
 import {  Route, Switch  } from 'react-router-dom';
 import  About  from './Component/Pages/About';
+import Home from './Component/Pages/Home';
 
 function App() {
   
@@ -17,6 +18,9 @@ function App() {
         <Header />
         <Route exact path="/">
         <CartProduct />
+        </Route>
+        <Route exact path="/home">
+          <Home />
         </Route>
         <Route exact path="/about">
           <About />
