@@ -2,6 +2,7 @@ import React from "react";
 
 import { Container, Navbar  } from 'react-bootstrap';
 import {Cart} from '../Cart/Card'
+import { NavLink } from "react-router-dom";
 
 export const Header = () => {
     return (
@@ -9,9 +10,9 @@ export const Header = () => {
     <div className="fixed-top">
     <Navbar bg="dark"  variant="dark">
     <Container className="justify-content-center"    >
-      <Navbar.Brand >Home</Navbar.Brand>
+      <Navbar.Brand href="#Home">Home</Navbar.Brand>
       <Navbar.Brand href="#store">Store</Navbar.Brand>
-      <Navbar.Brand >About</Navbar.Brand>
+      <NavLink to="/About" style={{ textDecoration: 'inherit', color : 'white' }}>About</NavLink>
       </Container>
       <Cart />
     </Navbar>
