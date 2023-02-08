@@ -8,9 +8,25 @@ import  About  from './Component/Pages/About';
 import Home from './Component/Pages/Home';
 
 function App() {
-  
+
+  const [product, setproduct] = useState([]);
+
+  async function FetchProducts() {
+    const response = await fetch('https://swapi.dev/api/people/1/')
+    const data = await response.json();
+
+    const transformedProduct  = data.results.map(productData => {
+      return {
+            name: productData.name,
+            diameter: productData.diameter
+          }
+        });
+        setproduct(transformedProduct);
+  }
+
   const [cartItem, setCartItem] = useState([]);
   
+
   return (
     <div>
     <Switch>
