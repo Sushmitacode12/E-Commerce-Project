@@ -11,8 +11,9 @@ export const Header = () => {
     <Navbar bg="dark"  variant="dark">
     <Container className="justify-content-center"    >
       <NavLink to="/Home" style={{ textDecoration: 'inherit', color :"white" }}>Home</NavLink>
-      <Navbar.Brand href="#store">Store</Navbar.Brand>
-      <NavLink to="/About" style={{ textDecoration: 'inherit', color : 'white' }}>About</NavLink>
+      <NavLink to="/Store" style={{ textDecoration: 'inherit', color :"white" }}>Store</NavLink>
+      <NavLink to="/About" style={{ textDecoration: 'inherit', color : 'white',marginRight:"20px" }}>About</NavLink>
+      <NavLink to="/ContactUs" style={{ textDecoration: 'inherit', color : 'white',marginRight:"20px" }}>Contact-Us</NavLink>
       </Container>
       <Cart />
     </Navbar>
@@ -27,5 +28,5 @@ export const Header = () => {
     </div>
     </div> 
     );
-}
+};
 

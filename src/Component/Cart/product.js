@@ -1,6 +1,6 @@
 import CardComponent from "../Card/Cart";
 
-export const CartProduct = (props) => {
+export const CartProduct = () => {
   return (
     <div className="d-flex">
       <div className="mx-auto">

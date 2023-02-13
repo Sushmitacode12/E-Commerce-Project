@@ -1,82 +1,44 @@
 import React from "react";
-import { Navbar, Container, Table } from "react-bootstrap";
+import { Navbar, Container, Table, Button } from "react-bootstrap";
 
+const tours = [
+  { date: "JUL16", city: "DETROIT, MI", venue: "DTE ENERGY MUSIC THEATRE" },
+  { date: "JUL17", city: "TORONTO,ON", venue: "BUDWEISER STAGE" },
+  { date: "JUL18", city: "BRISTOW, VA", venue: "JIGGY LUBE LIVE" },
+  { date: "JUL19", city: "PHOENIX, AZ", venue: "AK-CHIN PAVILION" },
+  { date: "JUL20", city: "LAS VEGAS, NV", venue: "T-MOBILE ARENA" },
+  { date: "JUL21", city: "CONCORD, CA", venue: "CONCORD PAVILION" },
+];
 
-const Home = () => {
-    return (
-        <div>
-     <div>
+export const Home = () => {
+  return (
+    <div>
+      <div>
         <Navbar className="text-white bg-secondary" expand="md">
           <Container className="d-block">
-            <p className="display-5 text-center">Get our Latest Album</p>
-            <img
-              style={{ width: "100px" }}
-              className="rounded mx-auto d-block"
-              src="https://images.macrumors.com/t/JioodhXXb8qPT9NZBGGlYedCIq8=/400x0/article-new/2017/02/itunesremote.jpg?lossy"
-              alt="icon"
-            />
+            <p className="display-5 text-center">Get Our Latest Album</p>
           </Container>
         </Navbar>
       </div>
       <div>
-          <div>
-              <h3 className="text-center mt-4">TOURS</h3>
-          </div>
+        <h3 className="text-center mt-4 mb-4" style={{ fontFamily: "serif" }}>
+          TOURS
+        </h3>
         <Table className="border d-flex align-items-center justify-content-center">
           <tbody>
-            <tr>
-              <td>JUL16</td>
-              <td>DETROIT, MI</td>
-              <td>DTE ENERGY MUSIC THEATRE</td>
-              <td>
-                <button className="bg-info text-white">BUY TICKET</button>
-              </td>
-            </tr>
-            <tr>
-              <td>JUL19</td>
-              <td>TORONTO,ON</td>
-              <td>BUDWEISER STAGE</td>
-              <td>
-                <button className="bg-info text-white">BUY TICKET</button>
-              </td>
-            </tr>
-            <tr>
-              <td>JUL22</td>
-              <td>BRISTOW, VA</td>
-              <td>JIGGY LUBE LIVE</td>
-              <td>
-                <button className="bg-info text-white">BUY TICKET</button>
-              </td>
-            </tr>
-            <tr>
-              <td>JUL29</td>
-              <td>PHOENIX, AZ</td>
-              <td>AK-CHIN PAVILION</td>
-              <td>
-                <button className="bg-info text-white">BUY TICKET</button>
-              </td>
-            </tr>
-            <tr>
-              <td>AUG2</td>
-              <td>LAS VEGAS, NV</td>
-              <td>T-MOBILE ARENA</td>
-              <td>
-                <button className="bg-info text-white">BUY TICKET</button>
-              </td>
-            </tr>
-            <tr>
-              <td>AUG7</td>
-              <td>CONCORD, CA</td>
-              <td>CONCORD PAVILION</td>
-              <td>
-                <button className="bg-info text-white">BUY TICKET</button>
-              </td>
-            </tr>
+            {tours.map((tour) => (
+              <tr>
+                <td>{tour.date}</td>
+                <td>{tour.city}</td>
+                <td>{tour.venue}</td>
+                <td>
+                  <Button className="bg-info text-white">BUY TICKET</Button>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </Table>
       </div>
     </div>
-    );
-}
-
-export default Home;
+  );
+};
