@@ -5,7 +5,6 @@ import {CartContext} from "../Store/cart-context";
 export const Cart = () => {
     const cartCtx = useContext(CartContext);
     
-    console.log(cartCtx.cartItem);
  
    const [show, setShow] = useState(false);
    const [cartQuantity, setCartQuantity] = useState(0);

@@ -1,5 +1,7 @@
 import React, { useContext } from "react";
 import { Container, Card, Button } from "react-bootstrap";
+import { NavLink } from "react-router-dom";
+//import { CartProduct } from "../Cart/AvailableProduct";
 import {CartContext} from "../Store/cart-context";
 
 export default function CardComponent  (props)  {
@@ -33,10 +35,12 @@ export default function CardComponent  (props)  {
         <Container className="mt-5">
             <Card style={{ width: '18rem' }}>
                 <Card.Title>{props.title}</Card.Title>
+                <NavLink to="/product-page">
                 <Card.Img 
                     variant="top"
                      src={props.src}
                 />
+                </NavLink>
                 <Card.Body className="d-block">
                     <p>Price: {props.price}</p>
                     <Button
