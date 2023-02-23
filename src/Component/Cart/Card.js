@@ -4,8 +4,6 @@ import {CartContext} from "../Store/cart-context";
 
 export const Cart = () => {
     const cartCtx = useContext(CartContext);
-    
- 
    const [show, setShow] = useState(false);
    const [cartQuantity, setCartQuantity] = useState(0);
  

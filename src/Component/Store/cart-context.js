@@ -4,4 +4,8 @@ export const CartContext = React.createContext({
     cartItem : []
 });
 
+export const AuthContext = React.createContext({
+    contextValue: { token: "", isLoggedIn: false, login: (token) => {} }
+  });
+
 //export default CartContext;
