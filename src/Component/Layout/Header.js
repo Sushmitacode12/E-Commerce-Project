@@ -1,5 +1,5 @@
 import { Container, Navbar  } from 'react-bootstrap';
-import {Cart} from '../Cart/Card'
+import {Cart} from '../Cart/Cart'
 import { NavLink } from "react-router-dom";
 
 export const Header = () => {

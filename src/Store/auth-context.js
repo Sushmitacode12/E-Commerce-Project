@@ -31,7 +31,7 @@
 //     };
 
 //     return (
-//     <AuthContext.Provider value={contextValue}>{props.children}
+//     <AuthContext.Provider value={contextValue}>
 //         {props.children}
 //     </AuthContext.Provider>
 //     );

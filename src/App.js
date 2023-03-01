@@ -1,25 +1,27 @@
 import React, { useState  } from 'react';
 import { Header } from './Component/Layout/Header';
 import Footer  from './Component/Layout/Footer';
-import { CartContext, AuthContext } from './Component/Store/cart-context';
+import { CartContext, AuthContext } from './Store/cart-context';
 import {  Redirect, Route, Switch  } from 'react-router-dom';
-import  About  from './Component/Pages/About';
+import  About  from './Pages/About';
 import { CartProduct } from './Component/Cart/AvailableProduct';
-import {Home} from './Component/Pages/Home';
-import { ContactUs } from './Component/Pages/ContactUs';
-import Login from './Component/Pages/Login';
-import ProductPage from './Component/Pages/Product-page';
+import {Home} from './Pages/Home';
+import { ContactUs } from './Pages/ContactUs';
+import Login from './Pages/Login';
+import ProductPage from './Pages/Product-page';
 
 
 function App() {
   
    const [cartItem, setCartItem] = useState([]);
    const [token, setToken] = useState(false);
+   const [email, setEmail] = useState("");
 
    const userIsLoggedIn = !!token;
 
-  const loginHandler = (token) => {
+  const loginHandler = (token, email) => {
     setToken(token);
+    setToken(email);
     localStorage.setItem("token", token);
   };
 
@@ -27,6 +29,7 @@ function App() {
     token: token,
     isLoggedIn: userIsLoggedIn,
     login: loginHandler,
+    userEmailId: email,
   };
 
   const submitHandler = async (detailRef) => {

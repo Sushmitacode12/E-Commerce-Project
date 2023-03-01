@@ -1,19 +1,39 @@
 import { useContext, useState, useEffect } from "react";
 import { Badge, Button, Offcanvas, Table } from "react-bootstrap";
-import {CartContext} from "../Store/cart-context";
-
+import {CartContext, AuthContext} from "../../Store/cart-context";
+import { getCartListService } from "../../services/apiServices";
 export const Cart = () => {
-    const cartCtx = useContext(CartContext);
+  const cartCtx = useContext(CartContext);
+  const authCtx = useContext(AuthContext);
    const [show, setShow] = useState(false);
    const [cartQuantity, setCartQuantity] = useState(0);
  
-   const itemBadge = cartCtx.cartItem.length;
+   //const itemBadge = cartCtx.cartItem.length;
+
+   const a = authCtx.userEmailId.replace("@", "");
+    const newEmailId = a.replace(".", "");
+
+  const getCartList = async () => {
+    if (authCtx.isLoggedIn) {
+      const data = await getCartListService(newEmailId);
+      setCartQuantity(data?.length);
+      cartCtx.setCartItem(data);
+    } else if (!authCtx.isLoggedIn) {
+      setCartQuantity(0);
+    }
+  };
+
+  useEffect(() => {
+    getCartList();
+  }, [authCtx.isLoggedIn]);
  
    useEffect(() => {
-     setCartQuantity(itemBadge);
-   }, [itemBadge]);
+  if (cartCtx.cartItem.length > 0) setCartQuantity(cartCtx?.cartItem?.length);
+}, [cartCtx]);
  
-   const handleShow = () => setShow(true);
+   const handleShow = async () => {
+    setShow(true);
+   };
    const handleClose = () => setShow(false);
    return (
      <>
@@ -38,8 +58,8 @@ export const Cart = () => {
              </tr>
            </thead>
            <tbody>
-             {cartCtx.cartItem.map((item) => {
-                 <tr key={item.title}>
+                 {cartCtx?.cartItem.map((item, index) => (
+                  <tr key={index}>
                      <td>
                          <img
                              src={item.src}
@@ -54,7 +74,7 @@ export const Cart = () => {
                          <Button variant="danger">Remove</Button>    
                      </td>
                  </tr>
-             })}
+             ))}
              </tbody>
          </Table>
        </Offcanvas>

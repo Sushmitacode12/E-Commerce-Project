@@ -1,5 +1,4 @@
-import CardComponent from "../Card/Cart";
-
+import CardComponent from "../Card/Card";
 export const CartProduct = () => {
   return (
     <div className="d-flex">
