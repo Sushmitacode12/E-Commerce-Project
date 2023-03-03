@@ -2,7 +2,7 @@ import React, {  useRef, useContext } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { useHistory } from 'react-router-dom';
-import {AuthContext} from '../Store/cart-context';
+import { AuthContext } from '../Component/stor/cart-context';
 
 const Login = () => {
 
@@ -18,8 +18,8 @@ const Login = () => {
       const enteredpassword = passwordInputRef.current.value;
   
       fetch(
-        // "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyAZdyMbRVbELyUH1-ymvSOrdU2xmstPim4",
-        "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCzhVcxXkLFWDrUJqrUwpwOlq8dySbCDes",
+
+        "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyAZdyMbRVbELyUH1-ymvSOrdU2xmstPim4",
         {
           method: 'POST',
           body: JSON.stringify({
@@ -41,7 +41,7 @@ const Login = () => {
       })
       .then((data) => {
         authCtx.login(data.idToken, data.email);
-        history.replace('/Store');
+        history.replace('/store');
       })
       .catch((err) => {
         alert(err.message);
@@ -50,37 +50,6 @@ const Login = () => {
     
 
   return (
-  //   <form className="text-center bg-White">
-  //   <h3>Login</h3>
-  //   <div>
-  //     <label>Your Email</label>
-  //   </div>
-  //   <input
-  //     name="email"
-  //     id="email"
-  //     type="email"
-  //     required
-  //     ref={emailInputRef}
-  //   />
-  //   <div>
-  //     <label>Your Password</label>
-  //   </div>
-  //   <input
-  //     name="password"
-  //     id="password"
-  //     type="password"
-  //     required
-  //     ref={passwordInputRef}
-  //   />
-  //   <div>
-  //     <button
-  //       className="mt-3 mb-3 bg-primary text-white"
-  //       onClick={submitHandler}
-  //     >
-  //       Login
-  //     </button>
-  //   </div>
-  // </form>
   <div style={{margin:'5%'}}>
     <h1 style={{textAlign:'center',fontFamily:'MV Boli'}}>Log In</h1>
       <Form onSubmit={submitHandler}>

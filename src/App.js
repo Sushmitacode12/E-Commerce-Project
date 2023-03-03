@@ -1,7 +1,7 @@
 import React, { useState  } from 'react';
 import { Header } from './Component/Layout/Header';
 import Footer  from './Component/Layout/Footer';
-import { CartContext, AuthContext } from './Store/cart-context';
+import { CartContext, AuthContext } from './Component/stor/cart-context';
 import {  Redirect, Route, Switch  } from 'react-router-dom';
 import  About  from './Pages/About';
 import { CartProduct } from './Component/Cart/AvailableProduct';
@@ -9,6 +9,8 @@ import {Home} from './Pages/Home';
 import { ContactUs } from './Pages/ContactUs';
 import Login from './Pages/Login';
 import ProductPage from './Pages/Product-page';
+import { Storage } from './Pages/storage';
+
 
 
 function App() {
@@ -62,11 +64,11 @@ function App() {
          <Route exact path="/About" >
           <About />
         </Route>
-        <Route exact path="/Login" >
+        <Route exact path="/login" >
           <Login /> 
         </Route>
-        <Route exact path="/Store" >
-          <CartProduct />
+        <Route exact path="/store" >
+         <Storage /> 
         </Route>
         <Route exact path="//product-page" >
           <ProductPage />

@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Container, Card, Button } from "react-bootstrap";
-import {CartContext, AuthContext} from "../../Store/cart-context";
+import { CartContext, AuthContext } from "../stor/cart-context";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
 import { getCartListService } from "../../services/apiServices";
@@ -19,24 +19,12 @@ export default function CardComponent(props) {
       quantity: 1,
     };
     await axios
-      .post(`${process.env.REACT_APP_BASE_URL}/cartItem?${newEmailId}`, newItem)
+      .post(`https://crudcrud.com/api/59a16e4e0c8a467da40081955fbc4d04/cartItem?${newEmailId}`, newItem)
       .then(async (data) => {
         const cartData = await getCartListService(newEmailId);
         console.log(data);
 
-    // let isPresent = false;
-
-    // cartCtx.cartItem.map((item) => {
-    //   if (item.title === newItem.title) {
-    //     isPresent = true;
-    //     return newItem;
-    //   }
-    //   return item;
-    // });
-
-    // cartCtx.setCartItem(
-    //   isPresent ? [...cartCtx.cartItem] : [...cartCtx.cartItem, newItem]
-    // );
+    
     cartCtx.setCartItem(cartData);
   });
 };
