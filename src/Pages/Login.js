@@ -21,27 +21,27 @@ const Login = () => {
 
         "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyAZdyMbRVbELyUH1-ymvSOrdU2xmstPim4",
         {
-          method: 'POST',
-          body: JSON.stringify({
+          method: 'POST',                    // Request body with HTTP POST request.
+          body: JSON.stringify({              // JSON object 
             email: enteredEmail,
             password: enteredpassword,
             returnSecureToken: true,
           }),
-          headers: {
+          headers: {                                //  request body have JSON format.
             'Content-Type' : 'application/json',
           },
         })
-        .then(async (res) => {
+        .then(async (res) => {                      // promise returned by the Fetch Method
           if (res.ok) {
-            return res.json();
+            return res.json();                      // If response Form is OK return JSON data
           } else {
             let errorMessage = "Authentication Failed";
             throw new Error(errorMessage);
           }
       })
       .then((data) => {
-        authCtx.login(data.idToken, data.email);
-        history.replace('/store');
+        authCtx.login(data.idToken, data.email);      // update the user authentication context.
+        history.replace('/store');                     // redirect to the secured page.
       })
       .catch((err) => {
         alert(err.message);
@@ -55,7 +55,7 @@ const Login = () => {
       <Form onSubmit={submitHandler}>
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Email address</Form.Label>
-        <Form.Control type="email" placeholder="Enter email"  ref={emailInputRef}/>
+        <Form.Control type="email" placeholder="Enter email"  ref={emailInputRef}/>  
         <Form.Text className="text-muted">
           We'll never share your email with anyone else.
         </Form.Text>

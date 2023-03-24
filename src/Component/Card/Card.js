@@ -9,9 +9,9 @@ export default function CardComponent(props) {
   const cartCtx = useContext(CartContext);
   const authCtx = useContext(AuthContext);
   const a = authCtx.userEmailId.replace("@", "");
-  const newEmailId = a.replace(".", "");
+  const newEmailId = a.replace(".", "");            // modified newEmailId without @ and . 
 
-  const cartHandler = async(title, src, price) => {
+  const cartHandler = async(title, src, price) => {   // Adding a newItem to the cart by sending POST API request.
     const newItem = {
       title,
       src,
@@ -19,12 +19,11 @@ export default function CardComponent(props) {
       quantity: 1,
     };
     await axios
-      .post(`https://crudcrud.com/api/59a16e4e0c8a467da40081955fbc4d04/cartItem?${newEmailId}`, newItem)
+      .post(`https://crudcrud.com/api/52b0c644c519449f87b3ca0f78656c55/cartItem?${newEmailId}`, newItem)
       .then(async (data) => {
-        const cartData = await getCartListService(newEmailId);
+        const cartData = await getCartListService(newEmailId);            // list of cart item in the cart.
         console.log(data);
 
-    
     cartCtx.setCartItem(cartData);
   });
 };

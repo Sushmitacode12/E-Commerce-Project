@@ -12,18 +12,17 @@ import ProductPage from './Pages/Product-page';
 import { Storage } from './Pages/storage';
 
 
-
 function App() {
   
    const [cartItem, setCartItem] = useState([]);
    const [token, setToken] = useState(false);
    const [email, setEmail] = useState("");
 
-   const userIsLoggedIn = !!token;
+  const userIsLoggedIn = !!token;                    // Check Weather user is Logged in or not
 
   const loginHandler = (token, email) => {
     setToken(token);
-    setToken(email);
+    setEmail(email);
     localStorage.setItem("token", token);
   };
 
@@ -70,9 +69,9 @@ function App() {
         <Route exact path="/store" >
          <Storage /> 
         </Route>
-        <Route exact path="//product-page" >
+        {/* <Route exact path="//product-page" >
           <ProductPage />
-        </Route>
+        </Route> */}
         <Route exact path="/ContactUs" >
           <ContactUs onSumit={submitHandler}/> 
         </Route> 

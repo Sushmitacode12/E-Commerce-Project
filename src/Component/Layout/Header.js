@@ -21,7 +21,7 @@ export const Header = () => {
     <div className="mt-5">
       <Navbar className="text-white bg-secondary" expand="md">
         <Container className="justify-content-centre">
-          <p className="display-1">The Generics</p>
+          <p className="display-1">E-Commerce</p>
         </Container>
       </Navbar>
     </div>

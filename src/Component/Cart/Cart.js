@@ -1,10 +1,10 @@
-
 import { useState, useContext, useEffect } from "react";
 import { Badge, Button, Offcanvas, Table } from "react-bootstrap";
 import { CartContext, AuthContext } from "../stor/cart-context";
 import { getCartListService } from "../../services/apiServices";
 
 export const Cart = () => {
+  
   const cartCtx = useContext(CartContext);
   const authCtx = useContext(AuthContext);
 
@@ -36,6 +36,12 @@ export const Cart = () => {
     setShow(true);
   };
   const handleClose = () => setShow(false);
+
+  const handleRemoveCartItem = (title) => {
+    const deleteCartItem = cartCtx.cartItem.filter((item => item.title !== title))
+      cartCtx.setCartItem(deleteCartItem);
+  };
+
   return (
     <>
       <Button
@@ -56,6 +62,7 @@ export const Cart = () => {
               <th>ITEM</th>
               <th>PRICE</th>
               <th>QUANTITY</th>
+              <th>ACTION</th>
             </tr>
           </thead>
           <tbody>
@@ -70,10 +77,8 @@ export const Cart = () => {
                   {item.title}
                 </td>
                 <td>{item.price}</td>
-                <td>
-                  {item.quantity}
-                  <Button variant="danger">REMOVE</Button>
-                </td>
+                <td>{item.quantity}</td>
+                <td><Button variant="danger" onClick={() => handleRemoveCartItem(item.title)}>REMOVE</Button></td>
               </tr>
             ))}
           </tbody>

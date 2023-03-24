@@ -4,7 +4,7 @@ export const CartProduct = () => {
     <div className="d-flex">
       <div className="mx-auto">
         <CardComponent
-          title="Colors"
+          title="Black and white Colors"
           src="https://prasadyash2411.github.io/ecom-website/img/Album%201.png"
           price={100}
         /> 
