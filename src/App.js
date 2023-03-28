@@ -35,7 +35,7 @@ function App() {
 
   const submitHandler = async (detailRef) => {
     const response = await fetch(
-      "https://e-commerce-website-9bb41-default-rtdb.firebaseio.com/data.json",
+      "https://e-commerce-16a42-default-rtdb.firebaseio.com/productissue.json",
       {
         method: "POST",
         body: JSON.stringify(detailRef),
@@ -69,13 +69,10 @@ function App() {
         <Route exact path="/store" >
          <Storage /> 
         </Route>
-        {/* <Route exact path="//product-page" >
-          <ProductPage />
-        </Route> */}
         <Route exact path="/ContactUs" >
-          <ContactUs onSumit={submitHandler}/> 
+          <ContactUs onSubmit={submitHandler}/> 
         </Route> 
-        <Route exact path="/product-page">
+        <Route exact path="/product-page/:id">
           <ProductPage />
             </Route>
         <Route path="*">

@@ -7,7 +7,8 @@ export const ProductCard = (props) => {       // Reusable ProductCard component
       <Card style={{ width: "200px" }}>
         <Card.Title>{props.title}</Card.Title>
           <Card.Img variant="top" src={props.src} />
+          <div>Review : 4 star</div>
       </Card>
     </Container>
-    )
-}
+    );
+};

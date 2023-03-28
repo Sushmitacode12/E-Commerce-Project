@@ -19,7 +19,7 @@ export default function CardComponent(props) {
       quantity: 1,
     };
     await axios
-      .post(`https://crudcrud.com/api/52b0c644c519449f87b3ca0f78656c55/cartItem?${newEmailId}`, newItem)
+      .post(`https://e-commerce-16a42-default-rtdb.firebaseio.com/cartItem/${newEmailId}.json`, newItem)
       .then(async (data) => {
         const cartData = await getCartListService(newEmailId);            // list of cart item in the cart.
         console.log(data);
@@ -31,7 +31,7 @@ export default function CardComponent(props) {
     <Container className="mt-5">
       <Card style={{ width: "300px" }}>
         <Card.Title>{props.title}</Card.Title>
-        <NavLink to="/product-page">
+        <NavLink to={`/product-page/${props.id}`}>
           <Card.Img variant="top" src={props.src} />
         </NavLink>
         <Card.Body className="d-block">
